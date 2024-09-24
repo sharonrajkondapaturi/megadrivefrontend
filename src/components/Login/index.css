@@ -1,0 +1,147 @@
+.login-container{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height:100vh;
+}
+.login-background{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    height:500px;
+    width: 700px;
+    box-shadow: rgba(0, 0, 0, 0.35) 0px 5px 15px;
+    border-radius:15px;
+}
+.login-head{
+    text-align: center;
+    font-size:25px;
+}
+.login-img{
+    height:500px;
+    width:370px;
+    border-radius: 10px;
+}
+.login-form{
+    background-color:transparent;
+    display: flex;
+    flex-direction: column;
+    padding:40px;
+    margin-top:50px;
+}
+.title{
+    margin-bottom: 10px;
+    font-weight: bold;
+    font-size:16px;
+    color:#000;
+}
+.login-input{
+    width:240px;
+    height:15px;
+    padding: 8px;
+    border:1px solid #000;
+    border-radius:10px;
+    margin-bottom: 20px;
+}
+.login-button{
+    width:100px;
+    background-color: #3b64d4;
+    border-radius:10px;
+    border:none;
+    color:#fff;
+    padding:8px;
+    font-weight: bold;
+    transition:1s;
+    cursor:pointer;
+}
+.login-button:hover{
+    background-color: #f0163e;
+}
+.blink{
+    font-weight:bold;
+    text-align: center;
+    transition: 1s;
+    cursor:pointer;
+    color: #000;
+}
+.blink:hover{
+    color: #3b64d4;
+}
+.error{
+    font-weight:400;
+    text-align: center;
+    margin:10px;
+    color: #f0163e;
+    font-size:15px;
+}
+@media screen and (max-width:991px) {
+    .login-background{
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        height:700px;
+        width:500px;
+    }
+    .login-img{
+        width:150px;
+        height:150px;
+        border-radius:100%;
+    }
+    .login-form{
+        margin-top: 10px;
+    }
+    .login-input{
+        width:320px;
+    }
+}
+@media screen and (max-width:575px){
+    .login-input{
+        width:230px;
+    }
+    .login-background{
+        width:350px;
+        height:540px;
+    }
+    .login-head{
+        font-size:24px;
+    }
+    .login-img{
+        height: 100px;
+        width: 100px;
+        margin-top: 10px;
+    }
+    .login-form{
+        margin-top:-35px;
+    }
+}
+@media screen and (max-width:375px){
+    .login-background{
+        width:280px;
+        height:480px;
+    }
+    .login-img{
+        height:80px;
+        width:80px;
+    }
+    .login-input{
+        width:200px;
+    }
+    .login-head{
+        font-size:24px;
+    }
+    .title{
+        font-size:14px;
+    }
+}
+@media screen and(max-width:320px){
+    .login-form{
+        padding:20px;
+    }
+    .login-input{
+        width:200px;
+    }
+    .login-background{
+        width:240px;
+    }
+}
