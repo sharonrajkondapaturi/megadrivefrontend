@@ -1,0 +1,14 @@
+.list-container{
+    background-color: #2b2b2a;
+    list-style:none;
+    color:#bdbdb9;
+    font-family:fantasy;
+    width:500px;
+    padding:20px;
+    border-radius:10px;
+    text-align: center;
+}
+.todo-detail{
+    font-size:18px;
+    font-weight:510;
+}

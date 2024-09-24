@@ -1,7 +1,10 @@
 import {useState,useEffect} from 'react'
+import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import TodoList from "../TodoList"
 import {ThreeDots} from 'react-loader-spinner'
+import './index.css'
 
 //check the status of the Api
 const apiStatus = {
@@ -11,11 +14,12 @@ const apiStatus = {
     failure:"FAILURE"
 }
 
-const todo = ()=>{
+const Todo = ()=>{
     const [currentApiStatus,setApiStatus] = useState(apiStatus.initial)
     const [todoDetails,setTodoDetails] = useState([])
+    const navigate = useNavigate()
 
-    const onRender = ()=>{
+    const onRender = async()=>{
         setApiStatus(apiStatus.loading)
         const jwtToken = Cookies.get('jwt_token')
         const config = {
@@ -23,18 +27,20 @@ const todo = ()=>{
         }
         const todoApiUrl = `https://megadrivetodobackend.onrender.com/todos`
         try{
-            const response = axios.get(todoApiUrl,config)
+            const response = await axios.get(todoApiUrl,config)
+            console.log(response)
             const responseDetails = response.data.map(eachResponse=>({
                 id:eachResponse.id,
                 userId:eachResponse.user_id,
                 todo:eachResponse.todo,
                 description:eachResponse.description,
-                priority:eachResponse.priority
+                priority:eachResponse.priority,
+                status:eachResponse.status
             }))
             setTodoDetails(responseDetails)
             setApiStatus(apiStatus.success)
         }
-        catch{
+        catch(error){
             setApiStatus(apiStatus.failure)
         }
     }
@@ -49,13 +55,19 @@ const todo = ()=>{
         const todoLength = todoDetails.length 
         return(
             <div>
-                {todoLength !== 0 ? <ul>{
+                {todoLength !== 0 ?
+                <ul className='todo-list'>{
                 todoDetails.map(eachTodo=> 
                     <TodoList key={eachTodo.id} todos={eachTodo}/>
                 )    
                 }</ul>:<h1>No current Todo List</h1>}
             </div>
         )
+    }
+
+    const onLogout = ()=>{
+        Cookies.remove('jwt_token')
+        navigate('/login')
     }
 
     const onRenderStatus = ()=>{
@@ -76,12 +88,13 @@ const todo = ()=>{
     
     return(
         <div>
-            <header>
-                <nav>
-                    <li><a>userDetails</a></li>
-                    <li><a>logout</a></li>
+            <header className='navLink'>
+                <nav className="link-rows">
+                    <li className='nav-option'><a className='anchor-option' href="http://localhost:3000/newTodo">newTodo</a></li>
+                    <li className='nav-option'><a className='anchor-option'>userDetails</a></li>
+                    <li className='nav-option' onClick={onLogout}><a className='anchor-option'>logout</a></li>
                 </nav>
-                <div>
+                <div className='todo-container'>
                     {onRenderStatus()}
                 </div>
             </header>
@@ -89,4 +102,4 @@ const todo = ()=>{
     )
 }
 
-export default todo
+export default Todo
