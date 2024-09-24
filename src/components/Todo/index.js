@@ -2,6 +2,7 @@ import {useState,useEffect} from 'react'
 import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import Cookies from 'js-cookie'
+import Header from '../Header'
 import TodoList from "../TodoList"
 import {ThreeDots} from 'react-loader-spinner'
 import './index.css'
@@ -65,11 +66,6 @@ const Todo = ()=>{
         )
     }
 
-    const onLogout = ()=>{
-        Cookies.remove('jwt_token')
-        navigate('/login')
-    }
-
     const onRenderStatus = ()=>{
         switch(currentApiStatus){
             case apiStatus.loading:
@@ -88,16 +84,10 @@ const Todo = ()=>{
     
     return(
         <div>
-            <header className='navLink'>
-                <nav className="link-rows">
-                    <li className='nav-option'><a className='anchor-option' href="http://localhost:3000/newTodo">newTodo</a></li>
-                    <li className='nav-option'><a className='anchor-option'>userDetails</a></li>
-                    <li className='nav-option' onClick={onLogout}><a className='anchor-option'>logout</a></li>
-                </nav>
-                <div className='todo-container'>
+            <Header/>
+            <div className='todo-container'>
                     {onRenderStatus()}
-                </div>
-            </header>
+            </div>
         </div>
     )
 }
