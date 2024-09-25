@@ -22,7 +22,7 @@ const Register = ()=>{
     const onCredentials = async(event) =>{
         event.preventDefault()
         const userDetails = {
-            username,password
+            username,password,email
         }
         setError('')
         setLoading(prevState => !prevState)
