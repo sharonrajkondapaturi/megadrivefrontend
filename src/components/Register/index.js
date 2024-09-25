@@ -178,7 +178,7 @@ const Register = ()=>{
                 <button className="register-button" type="submit">Confirm</button>
                 </center>
                 {error===''?null:<p className='error'>{error}</p>}
-                <Link to="http://localhost:3000/login" className='blink'>Already an user?</Link>
+                <Link to="/login" className='blink'>Already an user?</Link>
             </form>
         </div>
         </div>
