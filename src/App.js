@@ -17,7 +17,7 @@ const App = ()=>(
       <Route path="/userdetails" element={<UserDetails/>}/>
       <Route path="/todos" element={<Todo/>}/>
       <Route path="/newTodo" element={<AddTodo/>}/>
-      <Route path="/editTodo" element={<EditTodo/>}/>
+      <Route path="/editTodo/:id" element={<EditTodo/>}/>
     </Route>
   </Routes>
   </BrowserRouter>

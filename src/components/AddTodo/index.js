@@ -17,7 +17,7 @@ const AddTodo = ()=>{
 
     const onRender = async(event)=>{
         event.preventDefault()
-        const postApiurl = `https://sharongameblog.onrender.com/posts/`
+        const postApiurl = `https://megadrivetodobackend.onrender.com/todos`
         const jwtToken = Cookies.get('jwt_token')
         const config = {
             headers: {Authorization:`Bearer ${jwtToken}`}
@@ -42,6 +42,7 @@ const AddTodo = ()=>{
                 setContentError(true)
             }
             else{
+                console.log(true)
                 setLoading(true)
                 await axios.post(postApiurl,postData,config)
                 navigate('/todos')

@@ -52,6 +52,10 @@ const Todo = ()=>{
         </center>
     )
 
+    const triggered = ()=>{
+        onRender()
+    }
+
     const onRenderSuccess = ()=>{
         const todoLength = todoDetails.length 
         return(
@@ -59,7 +63,7 @@ const Todo = ()=>{
                 {todoLength !== 0 ?
                 <ul className='todo-list'>{
                 todoDetails.map(eachTodo=> 
-                    <TodoList key={eachTodo.id} todos={eachTodo}/>
+                    <TodoList key={eachTodo.id} todos={eachTodo} onRender={triggered}/>
                 )    
                 }</ul>:<h1>No current Todo List</h1>}
             </div>
