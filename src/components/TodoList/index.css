@@ -36,3 +36,13 @@
     font-size:18px;
     font-weight: 510;
 }
+@media screen and (max-width:575px){
+    .list-container{
+        width:300px
+    }
+}
+@media screen and (max-width:375px){
+    .list-container{
+        width:250px
+    }
+}

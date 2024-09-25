@@ -1,5 +1,4 @@
 import {useState,useEffect} from 'react'
-import {useNavigate} from 'react-router-dom'
 import axios from 'axios'
 import Cookies from 'js-cookie'
 import Header from '../Header'
@@ -18,7 +17,6 @@ const apiStatus = {
 const Todo = ()=>{
     const [currentApiStatus,setApiStatus] = useState(apiStatus.initial)
     const [todoDetails,setTodoDetails] = useState([])
-    const navigate = useNavigate()
 
     const onRender = async()=>{
         setApiStatus(apiStatus.loading)
@@ -29,7 +27,6 @@ const Todo = ()=>{
         const todoApiUrl = `https://megadrivetodobackend.onrender.com/todos`
         try{
             const response = await axios.get(todoApiUrl,config)
-            console.log(response)
             const responseDetails = response.data.map(eachResponse=>({
                 id:eachResponse.id,
                 userId:eachResponse.user_id,

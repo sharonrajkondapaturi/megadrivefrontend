@@ -98,7 +98,7 @@ const Login = ()=>{
                 {error===''?null:<p className='error'>{error}</p>}
                 <button className="login-button" type="submit">Login</button>
                 </center>
-                <Link to="https://megadrivetodobackend.onrender.com/signup" className='blink'>Are you a new user?</Link>
+                <Link to="/signup" className='blink'>Are you a new user?</Link>
             </form>
         </div>
         </div>
